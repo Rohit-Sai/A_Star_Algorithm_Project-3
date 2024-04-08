@@ -208,7 +208,8 @@ class A_Star(Map,Node):
                         self.insert_node(cost+current_c2c,new_node,current_node)
                         tot_cost=self.total_cost(new_node)
                         heapq.heappush(open_list,(tot_cost,new_node))
-                        
+                        # Check if the new cost to come (current cost to come + cost to move to the new node)
+                        # is less than the previously recorded cost to come for the new node.
                         if current_c2c+cost<self.nodes[new_node][1]:
                             self.nodes[new_node][1]=current_c2c+cost
                             self.insert_node(current_c2c+cost,new_node,current_node)
